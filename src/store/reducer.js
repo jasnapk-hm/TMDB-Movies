@@ -25,7 +25,9 @@ const initialState = {
   genere: [],
   allmovies: [],
   generedetails:[],
-  user:localStorage.getItem('User_ID')
+  user:localStorage.getItem('User_ID'),
+  loading:false,
+  error:false,
 };
 
 const rootReducer = (state = initialState, action) => {

@@ -132,7 +132,6 @@ export const addFavorite = (moviedata) => ({
 
 
   export const fetchPopularMovies = async () => {
-const token='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNTc0N2FhY2RiMGY5NGMzZDZmYWQxMmJmN2QzNGQzMCIsIm5iZiI6MTcyMDU1MTM1NS45NTQzODQsInN1YiI6IjY0YjRlYTAyZTBjYTdmMDE0NDJhZTFhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.j6h_wbXPT3AD16sbuIdk-lagOdThRgSCLHcm4t03dQM'
   
   try {
     const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', {
