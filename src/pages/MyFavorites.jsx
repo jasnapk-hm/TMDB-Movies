@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../componenets/Header';
 import { useSelector } from 'react-redux';
 import { Grid, Typography } from '@mui/material';
-import CardComponenet from '../componenets/CardComponenet';
+import CardComponent from '../componenets/CardComponent';
 import Subheader from '../componenets/Subheader';
 import './MyFavorites.css'
 const Myfavorites = () => {
@@ -18,7 +18,7 @@ const Myfavorites = () => {
 
       {Myfavoritemovies?.map((moives) => (
 
-        <CardComponenet
+        <CardComponent
           movie={moives}
           isFavourite={isFavorite}
           handleFavoriteClick={""}

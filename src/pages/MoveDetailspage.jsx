@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovieDetails, addFavorite } from '../store/action';
 import {  Typography,} from '@mui/material';
 import Header from '../componenets/Header';
-import CardComponenet from '../componenets/CardComponenet';
+import CardComponent from '../componenets/CardComponent';
 import Subheader from '../componenets/Subheader';
 import './MovieDetails.css'
 const MovieDetailspage = () => {
@@ -35,7 +35,7 @@ const MovieDetailspage = () => {
     <Typography className="MovieTitle" variant='h4'  >Movie Details</Typography>
    
     <div className="Moviedetails"> 
-      <CardComponenet
+      <CardComponent
       movie={movielist}
       isFavourite={isFavorite}
       handleFavoriteClick={handleFavoriteClick}
