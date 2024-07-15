@@ -1,0 +1,33 @@
+.AllMovieTitle {
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    margin-top: revert;
+    font-size: 36px;
+}
+
+
+.Moviename {
+    display: flex;
+    font-weight: bold;
+    justify-content: left;
+    color: black;
+}
+
+.FavIcon {
+    color: red;
+}
+
+.Movierating {
+    color: brown;
+}
+
+.FavoriteIconButton {
+    position: absolute;
+    top: 7px;
+    right: -8px;
+    z-index: 1;
+    background: rgb(238, 238, 236);
+    border-radius: 50%;
+    padding: 5px;
+}
