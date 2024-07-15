@@ -29,23 +29,23 @@ const AllMovie = () => {
 
   return (<>
     <Typography variant="h4" className="AllMovieTitle">All Movies</Typography>
-    <Box sx={{ p: 2 }}>
-      
+    <Box sx={{ p: 2 }} >
+
       <Grid container spacing={2}>
         {allMovies?.map((movie) => (
           <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
-            <Card >
-             
+            <Card>
+
               <CardMedia
                 component="img"
                 height="400"
-                image={`${baseURL}/${movie?.poster_path}`} 
+                image={`${baseURL}/${movie?.poster_path}`}
                 alt={movie.title}
                 onClick={() => navigate(`/movie/${movie.id}`)}
-                
+
               />
-               <IconButton 
-                className="FavoriteIconButton" 
+              <IconButton
+                className="FavoriteIconButton"
                 onClick={() => handleFavoriteClick(movie)}
               >
                 {favoriteIds.includes(movie.id) ? (
@@ -62,7 +62,7 @@ const AllMovie = () => {
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
-                    paddingTop:"5px"
+                    paddingTop: "5px",
                   }}
                   variant="body2"
                 >
@@ -74,7 +74,7 @@ const AllMovie = () => {
         ))}
       </Grid>
     </Box>
-    </>
+  </>
   );
 };
 

@@ -1,10 +1,9 @@
 import React, { useEffect, } from "react";
-import { useDispatch,} from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { fetchGenres, removeUser } from '../store/action'
 import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Box, Chip } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { useNavigate,} from 'react-router-dom';
-
+import { useNavigate, } from 'react-router-dom';
 const Header = () => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,10 +32,10 @@ const Header = () => {
   return (
 
     <>
-      <AppBar position="static">
+      <AppBar style={{ backgroundColor: "rgb(1, 1, 78)" }} position="static">
         <Toolbar>
           <Typography variant="h6" style={{ flexGrow: 1, cursor: 'pointer', fontWeight: 600 }} onClick={() => nav('/home')} >
-            App Title
+            TMDB Movies
           </Typography>
           <Button color="inherit" style={{ cursor: 'pointer', fontWeight: 600 }} onClick={() => nav('/favourites')}>My Favourites</Button>
           <IconButton
