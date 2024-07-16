@@ -15,9 +15,9 @@ export const FETCH_ALLMOVIES_SUCCESS = 'FETCH_ALLMOVIES_SUCCESS';
 export const FETCH_ALLMOVIES_FAILURE = 'FETCH_ALLMOVIES_FAILURE';
 
 
-export const FETCH_GENRESDATA_REQUEST = 'FETCH_GENRES_REQUEST';
-export const FETCH_GENRESDATA_SUCCESS = 'FETCH_GENRES_SUCCESS';
-export const FETCH_GENRESDATA_FAILURE = 'FETCH_GENRES_FAILURE';
+export const FETCH_GENRESDATA_REQUEST = 'FETCH_GENRESDATA_REQUEST';
+export const FETCH_GENRESDATA_SUCCESS = 'FETCH_GENRESDATA_SUCCESS';
+export const FETCH_GENRESDATA_FAILURE = 'FETCH_GENRESDATA_FAILURE';
 
 export const ADD_FAVORITE = 'ADD_FAVORITE';
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
@@ -95,9 +95,9 @@ export const addFavorite = (moviedata) => ({
     type: FETCH_GENRESDATA_REQUEST ,
   });
   
-  export const fetchParticularGenereDataSuccess = (generedetails) => ({
+  export const fetchParticularGenereDataSuccess = (generedetail) => ({
     type: FETCH_GENRESDATA_SUCCESS,
-    payload: generedetails,
+    payload: generedetail,
   });
   
   export const fetchParticularGenereDataFailure = (error) => ({
@@ -204,11 +204,12 @@ export const fetchAllMovies = () => {
   };
 
 
-  export const fetchParticularGenereData = ({genre_id}) => {
+  export const fetchParticularGenereData = ({id}) => {
+    console.log("gereid action",id)
     return async (dispatch) => {
 dispatch(fetchParticularGenereDataRequest)
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genre_id}`, {
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${id}`, {
           method: 'GET',
           headers: {
             'Authorization':`Bearer ${token}`,
@@ -221,7 +222,8 @@ dispatch(fetchParticularGenereDataRequest)
         }
     
         const data = await response.json();
-       dispatch(fetchParticularGenereDataSuccess(data))
+        const generedetail=data?.results;
+       dispatch(fetchParticularGenereDataSuccess(generedetail))
         return data;
       } catch (error) {
         console.error('error', error);
