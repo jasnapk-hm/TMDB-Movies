@@ -41,7 +41,7 @@ const GenrePage = () => {
       <Header />
       <h1 style={
         { display: "flex", justifyContent: "center" }
-      }>Genredetailes page</h1>
+      }>Genredetails page</h1>
 
       <Box sx={{ p: 2 }} >
 
@@ -55,8 +55,6 @@ const GenrePage = () => {
                   height="400"
                   image={`${baseURL}/${movie?.poster_path}`}
                   alt={movie.title}
-                // onClick={() => navigate(`/movie/${movie.id}`)}
-
                 />
                 <IconButton
                   className="FavoriteIconButton"
