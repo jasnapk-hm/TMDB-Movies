@@ -11,7 +11,7 @@ const GenrePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const baseURL = "https://image.tmdb.org/t/p/w500";
-  const navigate =useNavigate();
+  const navigate = useNavigate();
 
   const details = useSelector((state) => state.generedetails)
   const movielist = useSelector((state) => state.movies);
@@ -40,10 +40,7 @@ const GenrePage = () => {
   return (
     <>
       <Header />
-      <h1 style={
-        { display: "flex", justifyContent: "center" }
-      }>Genredetails page</h1>
-
+      <Typography variant="h4" className="AllMovieTitle">Genredetails page</Typography>
       <Box sx={{ p: 2 }} >
 
         <Grid container spacing={2}>
@@ -56,7 +53,7 @@ const GenrePage = () => {
                   height="400"
                   image={`${baseURL}/${movie?.poster_path}`}
                   alt={movie.title}
-                onClick={() => navigate(`/movie/${movie.id}`)}
+                  onClick={() => navigate(`/movie/${movie.id}`)}
 
                 />
                 <IconButton
