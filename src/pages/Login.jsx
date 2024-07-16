@@ -1,10 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Typography, } from '@mui/material';
+import { TextField, Button, Typography, Slide, } from '@mui/material';
 import { useEffect } from 'react';
 import { addUser } from "../store/action";
 import { useDispatch, useSelector } from "react-redux";
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +29,18 @@ const Login = () => {
 
       navigate('/home')
     } else {
-      alert('Invalid email or password');
+
+      toast?.error('Invalid email or password', {
+        position: "top-right",
+        autoClose: 60000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
@@ -45,6 +60,8 @@ const Login = () => {
     }}>
 
       <Typography variant="h4">Login</Typography>
+      <ToastContainer
+      />
       <form onSubmit={handleLogin}>
         <TextField
           label="Email"
