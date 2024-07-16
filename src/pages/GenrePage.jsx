@@ -16,14 +16,10 @@ const GenrePage = () => {
   const baseURL = "https://image.tmdb.org/t/p/w500";
   const navigate = useNavigate();
   const details = useSelector((state) => state.generedetails)
-  const movielist = useSelector((state) => state.movies);
   const favorites = useSelector((state) => state.favorites);
 
-  const fav = useSelector((state) => state.favorites);
   const favoriteIds = favorites.map((values) => values.id);
 
-
-  const isFavorite = fav.map((x) => x.id).includes(movielist.id);
   const handleFavoriteClick = (movie) => {
     if (favoriteIds.includes(movie.id)) {
       dispatch(removeFavorite(movie.id));
@@ -36,7 +32,7 @@ const GenrePage = () => {
 
     dispatch(fetchParticularGenereData({ id }));
 
-  }, [dispatch]);
+  }, [dispatch,id]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Typography, Slide, } from '@mui/material';
+import { TextField, Button, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { addUser } from "../store/action";
 import { useDispatch, useSelector } from "react-redux";

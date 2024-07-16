@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../componenets/Header';
 import { useSelector } from 'react-redux';
-import { Grid, Typography } from '@mui/material';
+import {  Typography } from '@mui/material';
 import CardComponent from '../componenets/CardComponent';
 import Subheader from '../componenets/Subheader';
 import './MyFavorites.css'

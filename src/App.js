@@ -1,9 +1,9 @@
 
 
 
-import React, { Suspense,} from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import store from './store/store';
 import LoginPage from './pages/Login';

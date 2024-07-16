@@ -1,7 +1,7 @@
 import React, { useEffect, } from "react";
 import { useDispatch, } from 'react-redux';
 import { fetchGenres, removeUser } from '../store/action'
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Box, Chip } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useNavigate, } from 'react-router-dom';
 const Header = () => {

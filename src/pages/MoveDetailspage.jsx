@@ -1,5 +1,5 @@
-// src/pages/MovieDetails.js
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovieDetails, addFavorite } from '../store/action';
@@ -19,7 +19,7 @@ const MovieDetailspage = () => {
 
     dispatch(fetchMovieDetails({ id }))
 
-  }, [dispatch]);
+  }, [dispatch,id]);
 
   const isFavorite = fav.map((x) => x.id).includes(movielist.id);
   const handleFavoriteClick = (movielist) => {
