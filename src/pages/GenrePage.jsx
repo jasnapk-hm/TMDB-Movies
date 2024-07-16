@@ -19,7 +19,9 @@ const GenrePage = () => {
     <Header />
    
       
-      <h1>Genredetailes page</h1>
+      <h1 style={
+        {display:"flex",justifyContent:"center"}
+      }>Genredetailes page</h1>
       
     </>
   );
