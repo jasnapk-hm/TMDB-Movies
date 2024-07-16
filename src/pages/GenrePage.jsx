@@ -7,22 +7,20 @@ import Header from '../componenets/Header';
 
 const GenrePage = () => {
   const dispatch = useDispatch();
-  const {id}= useParams();
- const generedetails=useSelector((state)=>state.generedetails) 
+  const { id } = useParams();
+  const generedetails = useSelector((state) => state.generedetails)
   useEffect(() => {
-  
-      dispatch(fetchParticularGenereData(id))
+
+    dispatch(fetchParticularGenereData(id))
   }, [dispatch]);
 
   return (
-<>
-    <Header />
-   
-      
+    <>
+      <Header />
       <h1 style={
-        {display:"flex",justifyContent:"center"}
+        { display: "flex", justifyContent: "center" }
       }>Genredetailes page</h1>
-      
+
     </>
   );
 };
