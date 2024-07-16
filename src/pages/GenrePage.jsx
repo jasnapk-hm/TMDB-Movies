@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchParticularGenereData, removeFavorite, addFavorite } from '../store/action';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Header from '../componenets/Header';
 import { Box, Typography, Grid, Card, CardMedia, CardContent, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -11,6 +11,7 @@ const GenrePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const baseURL = "https://image.tmdb.org/t/p/w500";
+  const navigate =useNavigate();
 
   const details = useSelector((state) => state.generedetails)
   const movielist = useSelector((state) => state.movies);
@@ -55,6 +56,8 @@ const GenrePage = () => {
                   height="400"
                   image={`${baseURL}/${movie?.poster_path}`}
                   alt={movie.title}
+                onClick={() => navigate(`/movie/${movie.id}`)}
+
                 />
                 <IconButton
                   className="FavoriteIconButton"
