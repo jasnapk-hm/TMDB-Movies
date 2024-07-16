@@ -10,8 +10,8 @@ const Subheader = () => {
   const ge = useSelector((state) => state.genere);
 
 
-  const handleClick = (id) => {
-    navigate(`/genere/${id}`)
+  const handleClick = (id,name) => {
+    navigate(`/genere/${id}`, { state: { name } })
   }
   useEffect(() => {
 
@@ -24,7 +24,7 @@ const Subheader = () => {
     <>
       <Box sx={{ p: 2, display: 'flex', justifyContent: 'center', flexWrap: 'wrap', }}>
         {ge?.genres?.map((genre) => (
-          <Chip onClick={() => handleClick(genre.id)} key={genre} label={genre.name} style={{ backgroundColor: "rgb(151 195 229)", margin: 5, fontSize: "14px", margin: "10px" }} />
+          <Chip onClick={() => handleClick(genre.id,genre.name)} key={genre} label={genre.name} style={{ backgroundColor: "rgb(151 195 229)", margin: 5, fontSize: "14px", margin: "10px" }} />
         ))}
       </Box>
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchParticularGenereData, removeFavorite, addFavorite } from '../store/action';
-import { useNavigate, useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import Header from '../componenets/Header';
 import { Box, Typography, Grid, Card, CardMedia, CardContent, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -9,10 +9,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const GenrePage = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const loaction = useLocation()
+  const { id } = useParams()
+
+  const { name } = loaction.state || { name: 'nogenre' };
   const baseURL = "https://image.tmdb.org/t/p/w500";
   const navigate = useNavigate();
-
   const details = useSelector((state) => state.generedetails)
   const movielist = useSelector((state) => state.movies);
   const favorites = useSelector((state) => state.favorites);
@@ -30,7 +32,6 @@ const GenrePage = () => {
     }
   };
 
-
   useEffect(() => {
 
     dispatch(fetchParticularGenereData({ id }));
@@ -42,7 +43,7 @@ const GenrePage = () => {
       <Header />
       <Typography variant="h4" className="AllMovieTitle">Genredetails page</Typography>
       <Box sx={{ p: 2 }} >
-
+        <Typography variant="h4" style={{ justifyContent: "left", fontWeight: 900, fontSize: "30px" }}>{name}</Typography>
         <Grid container spacing={2}>
           {details?.map((movie) => (
             <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
