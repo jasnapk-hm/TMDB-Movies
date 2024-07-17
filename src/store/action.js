@@ -171,7 +171,7 @@ export const fetchMovieDetails =  ({id}) => {
   dispatch(fetchMovieDetailsSuccess(data))
   return data;
   } catch (error) {
-    dispatch (fetchMovieDetailsFailure(error.message));
+    dispatch (fetchMovieDetailsFailure(error));
     console.error('Error fetching movie :', error);
   }}
 };
@@ -199,7 +199,7 @@ export const fetchAllMovies = () => {
    
     } catch (error) {
       console.error('error', error);
-      dispatch(fetchAllMovieDetailsFailure())
+      dispatch(fetchAllMovieDetailsFailure(error))
     }}
   };
 
@@ -227,7 +227,7 @@ dispatch(fetchParticularGenereDataRequest)
         return data;
       } catch (error) {
         console.error('error', error);
-        dispatch(fetchParticularGenereDataFailure())
+        dispatch(fetchParticularGenereDataFailure(error))
 
       }}
     };
