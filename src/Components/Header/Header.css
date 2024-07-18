@@ -1,0 +1,10 @@
+
+  .Typography {
+    flex-grow: 1;
+    cursor: pointer;
+  }
+  
+  .Button {
+    cursor: pointer;
+    font-weight: 600;
+  }

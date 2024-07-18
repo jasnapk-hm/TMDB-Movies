@@ -2,9 +2,8 @@
     width: 80%;
     padding-left: 10%;
 }
-.Title {
+.MyTitle {
     display: flex;
     justify-content: center;
-    margin-top: 33px;
-    
+
   }

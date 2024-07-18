@@ -18,7 +18,7 @@ import { FETCH_GENRES_REQUEST,
    REMOVE_FAVORITE,
    ADD_USER,REMOVE_USER
    
-  } from './action';
+  } from '../Constants/constants';
 const initialState = {
   favorites: [],
   movies: [],

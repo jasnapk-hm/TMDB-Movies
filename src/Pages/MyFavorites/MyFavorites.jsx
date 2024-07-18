@@ -1,19 +1,16 @@
 import React from 'react'
-import Header from '../componenets/Header';
 import { useSelector } from 'react-redux';
 import {  Typography } from '@mui/material';
-import CardComponent from '../componenets/CardComponent';
-import Subheader from '../componenets/Subheader';
-import './MyFavorites.css'
-const Myfavorites = () => {
+import CardComponent from '../../Components/CardComponent/CardComponent';
+import './MyFavorites.css';
+const MyFavorites = () => {
 
   const Myfavoritemovies = useSelector((state) => state.favorites)
   let isFavorite = false;
 
   return (<>
-    <Header />
-    <Subheader />
-    <Typography className="Title" variant="h4"  >MyFavorites</Typography>
+
+    <Typography className='MyTitle'>MyFavorites</Typography>
     <div className='Myfavorites'>
 
       {Myfavoritemovies?.map((moives) => (
@@ -22,6 +19,7 @@ const Myfavorites = () => {
           movie={moives}
           isFavourite={isFavorite}
           handleFavoriteClick={""}
+          key={moives.id}
         />
 
       ))
@@ -32,4 +30,4 @@ const Myfavorites = () => {
   </>
   )
 }
-export default Myfavorites;
+export default MyFavorites;
