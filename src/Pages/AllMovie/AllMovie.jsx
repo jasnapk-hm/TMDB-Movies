@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllMovies, addFavorite, removeFavorite } from '../../Store/action';
 import { Box, Typography, Grid } from '@mui/material';
@@ -9,7 +9,6 @@ import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponen
 const AllMovie = () => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
-  // const allMovies = useSelector((state) => state.allmovies);
   const favoriteIds = favorites.map((values) => values.id);
   const handleFavoriteClick = (movie) => {
     if (favoriteIds.includes(movie.id)) {
@@ -21,12 +20,6 @@ const AllMovie = () => {
 
   const [data, isLoading, error] = CustomFetchApi(fetchAllMovies);
 
-
-  console.log("Alll",data)
-
-  // useEffect(() => {
-  //   dispatch(fetchAllMovies());
-  // }, [dispatch]);
 
   return (<>
     <Typography variant="h4" className="AllMovieTitle">All Movies</Typography>

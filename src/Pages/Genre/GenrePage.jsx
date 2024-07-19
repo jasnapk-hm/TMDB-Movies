@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchParticularGenereData, removeFavorite, addFavorite } from '../../Store/action';
 import { useLocation,useParams } from 'react-router';
@@ -14,7 +14,6 @@ const GenrePage = () => {
   const { id } = useParams()
 
   const { name } = loaction.state || { name: 'nogenre' };
-  // const details = useSelector((state) => state.generedetails)
   const favorites = useSelector((state) => state.favorites);
 
   const favoriteIds = favorites.map((values) => values.id);
@@ -30,12 +29,7 @@ const GenrePage = () => {
   const [data, isLoading, error] = CustomFetchApi(fetchParticularGenereData, id);
 
 
-console.log("gerenedetails",data)
-  // useEffect(() => {
 
-  //   dispatch(fetchParticularGenereData({ id }));
-
-  // }, [dispatch,id]);
 
   return (
     <>

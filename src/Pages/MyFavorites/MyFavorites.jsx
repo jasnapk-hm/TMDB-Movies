@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import {  Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './MyFavorites.css';
 const MyFavorites = () => {
