@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import { TextField, Button} from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { TextField, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { Bounce, ToastContainer, toast } from 'react-toastify';
-import './Login.css';
-import 'react-toastify/dist/ReactToastify.css';
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "./Login.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import { addUser } from "../../Store/Action/GenreAction";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,16 +19,17 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    const passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
     if (emailPattern.test(email) && passwordPattern.test(password)) {
       const userId = `${email}${password}`;
-      localStorage.setItem('User_ID', userId);
+      localStorage.setItem("User_ID", userId);
       dispatch(addUser(userId));
 
-      navigate('/home');
+      navigate("/home");
     } else {
-      toast.error('Invalid email or password', {
+      toast.error("Invalid email or password", {
         position: "top-right",
         autoClose: 6000,
         hideProgressBar: false,
@@ -44,13 +45,13 @@ const Login = () => {
 
   useEffect(() => {
     if (userId) {
-      navigate('/home', { replace: true });
+      navigate("/home", { replace: true });
     }
   }, [userId, navigate]);
 
   return (
     <div className="Login">
-      <h1 >Login</h1>
+      <h1>Login</h1>
       <ToastContainer />
       <form onSubmit={handleLogin}>
         <TextField
@@ -68,7 +69,12 @@ const Login = () => {
           fullWidth
           margin="normal"
         />
-        <Button className="button" type="submit" variant="contained" color="primary">
+        <Button
+          className="button"
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           Login
         </Button>
       </form>

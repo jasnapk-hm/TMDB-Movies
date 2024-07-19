@@ -16,7 +16,7 @@ const GenrePage = () => {
   const { name } = loaction.state || { name: 'nogenre' };
   const favorites = useSelector((state) => state.favorites);
 
-  const favoriteIds = favorites.map((values) => values.id);
+  const favoriteIds = favorites?.map((values) => values.id);
 
   const handleFavoriteClick = (movie) => {
     if (favoriteIds.includes(movie.id)) {
@@ -41,7 +41,7 @@ const GenrePage = () => {
           <Grid item key={moviee.id} xs={12} sm={6} md={4} lg={3}>
             <CardComponent    
              movie={moviee}
-             isFavourite={favoriteIds.includes(moviee.id)}
+             isFavourite={favoriteIds?.includes(moviee.id)}
              handleFavoriteClick={handleFavoriteClick} 
              key={moviee.id}
             />

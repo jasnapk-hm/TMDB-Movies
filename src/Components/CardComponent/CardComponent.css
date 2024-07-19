@@ -1,33 +1,30 @@
-
-
-
-.Box{
+.Box {
   padding: 20px;
 }
 .cardMedia {
-    width: 500px;
-  }
-  .CardMedia:hover {
-    cursor: pointer;
-  }
-  .CardContent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .MovieTitle {
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .MovieRating {
-    color: brown;
-    font-size: 16px;
-  }
-  
-  .MovieOverview {
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  width: 500px;
+}
+.CardMedia:hover {
+  cursor: pointer;
+}
+.CardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.MovieTitle {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.MovieRating {
+  color: brown;
+  font-size: 16px;
+}
+
+.MovieOverview {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

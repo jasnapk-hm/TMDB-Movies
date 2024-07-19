@@ -1,39 +1,32 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { Typography } from '@mui/material';
-import CardComponent from '../../Components/CardComponent/CardComponent';
-import './MyFavorites.css';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useSelector } from "react-redux";
+import { Typography } from "@mui/material";
+import CardComponent from "../../Components/CardComponent/CardComponent";
+import "./MyFavorites.css";
+import PropTypes from "prop-types";
 const MyFavorites = () => {
-
-  const Myfavoritemovies = useSelector((state) => state.favorites)
+  const Myfavoritemovies = useSelector((state) => state.favorites);
   let isFavorite = false;
 
-  return (<>
+  return (
+    <>
+      <Typography className="MyTitle">MyFavorites</Typography>
+      <div className="Myfavorites">
+        {Myfavoritemovies?.map((moives) => (
+          <CardComponent
+            movie={moives}
+            isFavourite={isFavorite}
+            handleFavoriteClick={""}
+            key={moives.id}
+          />
+        ))}
+      </div>
+    </>
+  );
+};
 
-    <Typography className='MyTitle'>MyFavorites</Typography>
-    <div className='Myfavorites'>
-
-      {Myfavoritemovies?.map((moives) => (
-
-        <CardComponent
-          movie={moives}
-          isFavourite={isFavorite}
-          handleFavoriteClick={""}
-          key={moives.id}
-        />
-
-      ))
-      }
-
-    </div>
-
-  </>
-  )
-}
-
-MyFavorites.propTypes={
-  movie:PropTypes.object,
-  isFavorite:PropTypes.string,
-}
+MyFavorites.propTypes = {
+  movie: PropTypes.object,
+  isFavorite: PropTypes.string,
+};
 export default MyFavorites;
