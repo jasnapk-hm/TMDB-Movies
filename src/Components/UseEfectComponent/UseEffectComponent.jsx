@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react';
 
-const CustomFetchApi = (dispatch,actionFunction, ids) => {
-    const [data, setData] = useState(null);
-    const [isPending, setIsPending] = useState(false);
+import { useEffect, useState } from 'react';
+import { useDispatch,} from 'react-redux';
+
+const CustomFetchApi = (actionFunction, ids) => {
+    const dispatch = useDispatch();
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    // const dispatch = useDispatch()
     useEffect(() => {
         const fetchData = async () => {
-            setIsPending(true);
             try {
                 const result = await dispatch(actionFunction(ids));
-                setData(result)
-                setIsPending(false);
-                setError(null);
-            } catch (error) {
-                setError(`${error} Could not Fetch Data `);
-                setIsPending(false);
+                console.log("val", result);
+                setData(result);
+                setIsLoading(false);
+            } catch (err) {
+                console.error("Fetch error:", err);
+                setError(err);
+                setIsLoading(false);
             }
         };
         fetchData();
-    },[]);
+    }, [actionFunction, ids, dispatch]);
 
-    return { data, isPending, error };
+    console.log("data....",data)
+    return  [data, isLoading, error];
 };
-
 
 export default CustomFetchApi;

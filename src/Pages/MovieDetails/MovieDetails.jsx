@@ -1,32 +1,21 @@
 
-import React, { useEffect} from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovieDetails, addFavorite ,removeFavorite} from '../../Store/action';
-import {  Typography,} from '@mui/material';
+import { fetchMovieDetails, addFavorite, removeFavorite } from '../../Store/action';
+import { Typography, } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './MovieDetails.css'
-// import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponent';
+import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponent';
 const MovieDetails = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
-  const movielist = useSelector((state) => state.movies);
   const favorites = useSelector((state) => state.favorites);
   const favoriteIds = favorites.map((values) => values.id);
-
-  // const { data: movielist, isPending: loading, error } = CustomFetchApi( fetchMovieDetails, { id });
-
-
-
-console.log("data",movielist)
-  useEffect(() => {
-
-    dispatch(fetchMovieDetails({ id }))
-
-  }, [dispatch,id]);
-
- 
+  console.log("Before PASS", id);
+  const [data, isLoading, error] = CustomFetchApi(fetchMovieDetails, id);
+  console.log("Data inside Niv", data, isLoading, error);
 
   const handleFavoriteClick = (movie) => {
     if (favoriteIds.includes(movie.id)) {
@@ -36,24 +25,22 @@ console.log("data",movielist)
     }
   };
 
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
-
   return (<>
     <Typography className="MovieTitle" variant='h4'  >Movie Details</Typography>
-   
-    <div className="Moviedetails"> 
+
+    <div className="Moviedetails">
+
       <CardComponent
-      movie={movielist}
-       isFavourite={favoriteIds.includes(movielist?.id)}
-      handleFavoriteClick={handleFavoriteClick}
-    />
+        key={data.id}
+        movie={data}
+        isFavourite={favoriteIds.includes(data.id)}
+        handleFavoriteClick={handleFavoriteClick}
+      />
+      {isLoading && <Typography variant='h6'>Loading...</Typography>}
+      {error && <Typography variant='h6'>Error: {error.message}</Typography>}
+      {!isLoading && !error && data && data.length === 0 && (
+                    <Typography variant='h6'>No data available.</Typography>
+                )}
     </div>
   </>
   );

@@ -19,7 +19,7 @@ function Caurosal() {
       setMovies(data?.results);
     };
     fetchData();
-  }, []);
+  },[]);
 
   return (
     <div>

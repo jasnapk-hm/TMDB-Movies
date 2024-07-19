@@ -28,7 +28,7 @@ const navigate =useNavigate();
                 {isFavourite ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderIcon />}
               </IconButton>
             )}
-         <Typography className="MovieTitle">{movie?.title}</Typography>
+         <Typography variant="h5" className="MovieTitle">{movie?.title}</Typography>
           <Typography className="MovieRating">Rating: {movie?.vote_average}</Typography>
           <Typography className="MovieOverview">{movie?.overview}</Typography>
       </CardContent>

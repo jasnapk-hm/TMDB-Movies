@@ -4,6 +4,7 @@ import { fetchParticularGenereData, removeFavorite, addFavorite } from '../../St
 import { useLocation,useParams } from 'react-router';
 import { Box, Typography, Grid} from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
+import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponent';
 
 import './GenrePage.css'
 
@@ -13,7 +14,7 @@ const GenrePage = () => {
   const { id } = useParams()
 
   const { name } = loaction.state || { name: 'nogenre' };
-  const details = useSelector((state) => state.generedetails)
+  // const details = useSelector((state) => state.generedetails)
   const favorites = useSelector((state) => state.favorites);
 
   const favoriteIds = favorites.map((values) => values.id);
@@ -26,11 +27,15 @@ const GenrePage = () => {
     }
   };
 
-  useEffect(() => {
+  const [data, isLoading, error] = CustomFetchApi(fetchParticularGenereData, id);
 
-    dispatch(fetchParticularGenereData({ id }));
 
-  }, [dispatch,id]);
+console.log("gerenedetails",data)
+  // useEffect(() => {
+
+  //   dispatch(fetchParticularGenereData({ id }));
+
+  // }, [dispatch,id]);
 
   return (
     <>
@@ -38,7 +43,7 @@ const GenrePage = () => {
       <Typography variant="h5" className="GenereTitle">{name}</Typography>
       <Box sx={{ p: 2 }} >
       <Grid container spacing={2}>
-        {details?.map((moviee) => (
+        {data?.results?.map((moviee) => (
           <Grid item key={moviee.id} xs={12} sm={6} md={4} lg={3}>
             <CardComponent    
              movie={moviee}
@@ -50,6 +55,11 @@ const GenrePage = () => {
         ))
         }
       </Grid>
+      {isLoading && <Typography variant='h6'>Loading...</Typography>}
+      {error && <Typography variant='h6'>Error: {error.message}</Typography>}
+      {!isLoading && !error && data && data.length === 0 && (
+                    <Typography variant='h6'>No data available.</Typography>
+                )}
     </Box>
     </>
   );
