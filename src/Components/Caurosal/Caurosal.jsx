@@ -6,7 +6,7 @@ import { fetchPopularMovies } from '../../Store/action';
 import { useNavigate } from 'react-router-dom';
 import { BaseURL } from '../../Constants/constants';
 import './Caurosal.css';
-
+import PropTypes from 'prop-types';
 
 function Caurosal() {
 
@@ -39,5 +39,13 @@ function Caurosal() {
       </Carousel>
     </div>
   );
+}
+Carousel.propTypes={
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        poster_path: PropTypes.string.isRequired,
+      }))
 }
 export default Caurosal;

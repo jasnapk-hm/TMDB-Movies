@@ -5,6 +5,8 @@ import { Box, Typography, Grid } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './AllMovie.css';
 import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponent';
+import PropTypes from 'prop-types';
+
 
 const AllMovie = () => {
   const dispatch = useDispatch();
@@ -46,5 +48,9 @@ const AllMovie = () => {
   </>
   );
 };
+
+AllMovie.propTypes={
+  id: PropTypes.number.isRequired,
+}
 
 export default AllMovie;

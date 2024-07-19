@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './MyFavorites.css';
+import PropTypes from 'prop-types';
 const MyFavorites = () => {
 
   const Myfavoritemovies = useSelector((state) => state.favorites)
@@ -29,5 +30,10 @@ const MyFavorites = () => {
 
   </>
   )
+}
+
+MyFavorites.propTypes={
+  movie:PropTypes.object,
+  isFinite:PropTypes.string.isRequired,
 }
 export default MyFavorites;

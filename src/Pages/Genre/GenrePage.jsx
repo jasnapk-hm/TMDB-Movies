@@ -5,7 +5,7 @@ import { useLocation,useParams } from 'react-router';
 import { Box, Typography, Grid} from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponent';
-
+import PropTypes from 'prop-types';
 import './GenrePage.css'
 
 const GenrePage = () => {
@@ -58,5 +58,10 @@ const GenrePage = () => {
     </>
   );
 };
+
+
+GenrePage.propTypes={
+  id:PropTypes.number.isRequired,
+}
 
 export default GenrePage;

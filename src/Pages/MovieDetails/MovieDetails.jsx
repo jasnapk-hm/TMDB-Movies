@@ -7,6 +7,7 @@ import { Typography, } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './MovieDetails.css'
 import CustomFetchApi from '../../Components/UseEfectComponent/UseEffectComponent';
+import PropTypes from 'prop-types';
 const MovieDetails = () => {
 
   const { id } = useParams();
@@ -45,5 +46,8 @@ const MovieDetails = () => {
   </>
   );
 };
+MovieDetails.propTypes={
+  id: PropTypes.number.isRequired,
+}
 
 export default MovieDetails;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchGenres } from '../../Store/action'
 import { Box, Chip } from '@mui/material';
 import { useNavigate, } from 'react-router-dom';
+import PropTypes from 'prop-types';
 const SubHeader = () => {
 
   const dispatch = useDispatch();
@@ -31,4 +32,12 @@ const SubHeader = () => {
     );
 
 }
+SubHeader.propTypes={
+  ge:PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }))
+}
+
 export default SubHeader;

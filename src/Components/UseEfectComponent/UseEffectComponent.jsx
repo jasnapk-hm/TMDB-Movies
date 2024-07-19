@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useDispatch,} from 'react-redux';
+import PropTypes from "prop-types";
 
 const CustomFetchApi = (actionFunction, ids) => {
     const dispatch = useDispatch();
@@ -26,5 +27,8 @@ const CustomFetchApi = (actionFunction, ids) => {
     console.log("data....",data)
     return  [data, isLoading, error];
 };
-
+CustomFetchApi.propTypes = {
+    actionFunction: PropTypes.func.isRequired,
+    ids: PropTypes.number.isRequired,
+};
 export default CustomFetchApi;
