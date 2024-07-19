@@ -6,7 +6,7 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 import './Login.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { addUser } from "../../Store/action";
+import { addUser } from "../../Store/Action/GenreAction";
 
 const Login = () => {
   const [email, setEmail] = useState('');

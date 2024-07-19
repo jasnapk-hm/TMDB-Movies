@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchParticularGenereData, removeFavorite, addFavorite } from '../../Store/action';
+import { fetchParticularGenereData, removeFavorite, addFavorite } from '../../Store/Action/GenreAction';
 import { useLocation,useParams } from 'react-router';
 import { Box, Typography, Grid} from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
@@ -61,7 +61,7 @@ const GenrePage = () => {
 
 
 GenrePage.propTypes={
-  id:PropTypes.number.isRequired,
+  id:PropTypes.number,
 }
 
 export default GenrePage;

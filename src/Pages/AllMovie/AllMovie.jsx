@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllMovies, addFavorite, removeFavorite } from '../../Store/action';
+import { fetchAllMovies, } from '../../Store/Action/Action';
+import{addFavorite, removeFavorite } from '../../Store/Action/GenreAction';
 import { Box, Typography, Grid } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './AllMovie.css';
@@ -50,7 +51,7 @@ const AllMovie = () => {
 };
 
 AllMovie.propTypes={
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 }
 
 export default AllMovie;

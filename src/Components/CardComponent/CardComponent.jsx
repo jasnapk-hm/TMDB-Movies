@@ -38,15 +38,15 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
 };
 
 CardComponenet.propTypes = {
-  movie: PropTypes.shape({
+  movie: PropTypes.arrayOf({
     poster_path: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     vote_average: PropTypes.number.isRequired,
     overview: PropTypes.string.isRequired
-  }).isRequired,
-  isFavourite: PropTypes.bool.isRequired,
-  handleFavoriteClick: PropTypes.func.isRequired,
+  }),
+  isFavourite: PropTypes.bool,
+  handleFavoriteClick: PropTypes.func,
 
 
 

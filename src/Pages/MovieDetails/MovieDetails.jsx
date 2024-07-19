@@ -2,7 +2,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovieDetails, addFavorite, removeFavorite } from '../../Store/action';
+import { fetchMovieDetails} from '../../Store/Action/Action';
+import{addFavorite, removeFavorite } from '../../Store/Action/GenreAction';
+
 import { Typography, } from '@mui/material';
 import CardComponent from '../../Components/CardComponent/CardComponent';
 import './MovieDetails.css'
@@ -14,9 +16,7 @@ const MovieDetails = () => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const favoriteIds = favorites.map((values) => values.id);
-  console.log("Before PASS", id);
   const [data, isLoading, error] = CustomFetchApi(fetchMovieDetails, id);
-  console.log("Data inside Niv", data, isLoading, error);
 
   const handleFavoriteClick = (movie) => {
     if (favoriteIds.includes(movie.id)) {
@@ -47,7 +47,7 @@ const MovieDetails = () => {
   );
 };
 MovieDetails.propTypes={
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 }
 
 export default MovieDetails;

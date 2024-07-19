@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGenres } from '../../Store/action'
+import { fetchGenres } from '../../Store/Action/GenreAction'
 import { Box, Chip } from '@mui/material';
 import { useNavigate, } from 'react-router-dom';
 import PropTypes from 'prop-types';

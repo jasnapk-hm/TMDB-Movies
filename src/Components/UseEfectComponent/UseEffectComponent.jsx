@@ -12,7 +12,6 @@ const CustomFetchApi = (actionFunction, ids) => {
         const fetchData = async () => {
             try {
                 const result = await dispatch(actionFunction(ids));
-                console.log("val", result);
                 setData(result);
                 setIsLoading(false);
             } catch (err) {
@@ -24,7 +23,6 @@ const CustomFetchApi = (actionFunction, ids) => {
         fetchData();
     }, [actionFunction, ids, dispatch]);
 
-    console.log("data....",data)
     return  [data, isLoading, error];
 };
 CustomFetchApi.propTypes = {

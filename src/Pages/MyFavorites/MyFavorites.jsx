@@ -34,6 +34,6 @@ const MyFavorites = () => {
 
 MyFavorites.propTypes={
   movie:PropTypes.object,
-  isFinite:PropTypes.string.isRequired,
+  isFavorite:PropTypes.string,
 }
 export default MyFavorites;

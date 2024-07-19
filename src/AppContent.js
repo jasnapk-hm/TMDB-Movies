@@ -6,7 +6,7 @@ import MovieDetails from './Pages/MovieDetails/MovieDetails';
 import Home from './Pages/Home/Home';
 import ProtectedRoute from './Routing';
 import Header from './Components/Header/Header';
-
+import PropTypes from "prop-types";
 const AppContent = () => {
   const location = useLocation();
   const shouldShowHeader = location.pathname !== '/';
@@ -25,4 +25,8 @@ const AppContent = () => {
   );
 };
 
+AppContent.propTypes = {
+id:PropTypes.number.isRequired,
+
+};
 export default AppContent;
