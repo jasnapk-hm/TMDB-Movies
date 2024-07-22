@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import CardComponenet from './CardComponent';
-import { BaseURL } from '../../Constants/constants';
 
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
