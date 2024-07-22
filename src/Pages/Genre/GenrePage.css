@@ -1,13 +1,13 @@
 .MovieTitle {
-    display: flex;
-    font-weight: bold;
-    justify-content: center;
-    margin-top: revert;
-    font-size: 36px;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  margin-top: revert;
+  font-size: 36px;
 }
-.GenereTitle{
-    display: flex;
-    font-weight: bold;
-    justify-content: left;
-    padding-left: 40px;
+.GenereTitle {
+  display: flex;
+  font-weight: bold;
+  justify-content: left;
+  padding-left: 40px;
 }

@@ -17,7 +17,7 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <Box  sx={{padding:"30px"}}>
+    <Box sx={{ padding: "30px" }}>
       <Card>
         <CardMedia
           component="img"
@@ -29,11 +29,17 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
         />
         <CardContent className="CardContent">
           {location.pathname !== "/favourites" && (
-            <IconButton     data-testid="favorite-button" onClick={() => handleFavoriteClick(movie)}>
+            <IconButton
+              data-testid="favorite-button"
+              onClick={() => handleFavoriteClick(movie)}
+            >
               {isFavourite ? (
-                <FavoriteIcon data-testid="FavoriteIcon" style={{ color: "red" }} />
+                <FavoriteIcon
+                  data-testid="FavoriteIcon"
+                  style={{ color: "red" }}
+                />
               ) : (
-                <FavoriteBorderIcon  data-testid="FavoriteBorderIcon" />
+                <FavoriteBorderIcon data-testid="FavoriteBorderIcon" />
               )}
             </IconButton>
           )}

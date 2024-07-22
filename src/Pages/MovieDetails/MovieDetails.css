@@ -1,9 +1,9 @@
-.Moviedetails{
-    width: 80%;
-    padding-left: 10%;
+.Moviedetails {
+  width: 80%;
+  padding-left: 10%;
 }
 .MovieTitle {
-    display: flex;
-    justify-content: center;
-    margin-top: 33px;
-  }
+  display: flex;
+  justify-content: center;
+  margin-top: 33px;
+}

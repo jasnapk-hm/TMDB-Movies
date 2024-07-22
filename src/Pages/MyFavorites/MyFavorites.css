@@ -1,9 +1,8 @@
-.Myfavorites{
-    width: 80%;
-    padding-left: 10%;
+.Myfavorites {
+  width: 80%;
+  padding-left: 10%;
 }
 .MyTitle {
-    display: flex;
-    justify-content: center;
-
-  }
+  display: flex;
+  justify-content: center;
+}
