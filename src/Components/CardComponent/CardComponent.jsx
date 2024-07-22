@@ -29,11 +29,11 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
         />
         <CardContent className="CardContent">
           {location.pathname !== "/favourites" && (
-            <IconButton onClick={() => handleFavoriteClick(movie)}>
+            <IconButton     data-testid="favorite-button" onClick={() => handleFavoriteClick(movie)}>
               {isFavourite ? (
-                <FavoriteIcon style={{ color: "red" }} />
+                <FavoriteIcon data-testid="FavoriteIcon" style={{ color: "red" }} />
               ) : (
-                <FavoriteBorderIcon />
+                <FavoriteBorderIcon  data-testid="FavoriteBorderIcon" />
               )}
             </IconButton>
           )}

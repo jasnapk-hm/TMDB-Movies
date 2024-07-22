@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import "./Login.css";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import { addUser } from "../../Store/Action/GenreAction";
-
+import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

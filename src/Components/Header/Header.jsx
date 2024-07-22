@@ -55,7 +55,7 @@ const Header = () => {
           >
             My Favourites
           </Button>
-          <IconButton edge="end" color="inherit" onClick={handleMenu}>
+          <IconButton edge="end" color="inherit" data-testid="account-icon-button" onClick={handleMenu}>
             <AccountCircle />
           </IconButton>
           <Menu

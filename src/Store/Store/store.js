@@ -1,10 +1,10 @@
 
 import {createStore,applyMiddleware} from 'redux';
 import {thunk} from 'redux-thunk';
-import Generereducer from '../Reducer/GenreReducer';
+import rootReducer from '../Reducer/GenreReducer';
 
 
-export const store = createStore( Generereducer
+export const store = createStore( rootReducer
     
     ,applyMiddleware(thunk));
 export default store;
