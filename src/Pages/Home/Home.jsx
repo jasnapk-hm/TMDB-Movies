@@ -1,13 +1,13 @@
 import React from "react";
 import Caurosal from "../../Components/Caurosal/Caurosal";
 import AllMovie from "../AllMovie/AllMovie";
-
+import { Box } from "@mui/material";
 const Main = () => {
   return (
-    <div>
+    <Box>
       <Caurosal />
       <AllMovie />
-    </div>
+    </Box>
   );
 };
 

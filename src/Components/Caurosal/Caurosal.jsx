@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { useEffect, useState } from "react";
-import { CardMedia } from "@mui/material";
+import { CardMedia,Box } from "@mui/material";
 import { fetchPopularMovies } from "../../Store/Action/GenreAction";
 import { useNavigate } from "react-router-dom";
 import { BaseURL } from "../../Constants/constants";
@@ -21,7 +21,7 @@ function Caurosal() {
   }, []);
 
   return (
-    <div>
+    <Box>
       <Carousel showThumbs={false} autoPlay>
         {movies?.map((movie) => (
           <CardMedia
@@ -35,7 +35,7 @@ function Caurosal() {
           />
         ))}
       </Carousel>
-    </div>
+    </Box>
   );
 }
 Carousel.propTypes = {
