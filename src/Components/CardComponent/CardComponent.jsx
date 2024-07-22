@@ -17,7 +17,7 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <Box className="Box">
+    <Box  sx={{padding:"30px"}}>
       <Card>
         <CardMedia
           component="img"

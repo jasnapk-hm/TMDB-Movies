@@ -5,14 +5,14 @@ import CardComponent from "../../Components/CardComponent/CardComponent";
 import "./MyFavorites.css";
 import PropTypes from "prop-types";
 const MyFavorites = () => {
-  const Myfavoritemovies = useSelector((state) => state.favorites);
+  const myFavoritemovies = useSelector((state) => state.favorites);
   let isFavorite = false;
 
   return (
     <>
       <Typography className="MyTitle">MyFavorites</Typography>
       <div className="Myfavorites">
-        {Myfavoritemovies?.map((moives) => (
+        {myFavoritemovies?.map((moives) => (
           <CardComponent
             movie={moives}
             isFavourite={isFavorite}

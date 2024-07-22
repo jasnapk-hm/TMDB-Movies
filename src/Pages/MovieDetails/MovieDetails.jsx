@@ -7,14 +7,14 @@ import { addFavorite, removeFavorite } from "../../Store/Action/GenreAction";
 import { Typography } from "@mui/material";
 import CardComponent from "../../Components/CardComponent/CardComponent";
 import "./MovieDetails.css";
-import CustomFetchApi from "../../Components/UseEfectComponent/UseEffectComponent";
+import useFetchApi from "../../Components/UseEfectComponent/UseEffectComponent";
 import PropTypes from "prop-types";
 const MovieDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites);
   const favoriteIds = favorites?.map((values) => values.id);
-  const [data, isLoading, error] = CustomFetchApi(fetchMovieDetails, id);
+  const [data, isLoading, error] = useFetchApi(fetchMovieDetails, id);
   const handleFavoriteClick = (movie) => {
     if (favoriteIds?.includes(movie.id)) {
       dispatch(removeFavorite(movie.id));

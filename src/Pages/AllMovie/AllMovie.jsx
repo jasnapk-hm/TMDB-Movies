@@ -5,7 +5,7 @@ import { addFavorite, removeFavorite } from "../../Store/Action/GenreAction";
 import { Box, Typography, Grid } from "@mui/material";
 import CardComponent from "../../Components/CardComponent/CardComponent";
 import "./AllMovie.css";
-import CustomFetchApi from "../../Components/UseEfectComponent/UseEffectComponent";
+import useFetchApi from "../../Components/UseEfectComponent/UseEffectComponent";
 import PropTypes from "prop-types";
 
 const AllMovie = () => {
@@ -20,7 +20,7 @@ const AllMovie = () => {
     }
   };
 
-  const [data, isLoading, error] = CustomFetchApi(fetchAllMovies);
+  const [data, isLoading, error] = useFetchApi(fetchAllMovies);
 
   return (
     <>
