@@ -27,7 +27,7 @@ describe('CardComponenet', () => {
     jest.clearAllMocks();
   });
 
-  test('renders the CardComponenet correctly', () => {
+  test('rendering the CardComponenet correctly', () => {
     render(
       <Router>
         <CardComponenet
