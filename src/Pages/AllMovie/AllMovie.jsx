@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllMovies } from "../../Store/Action/GenreAction";
-import { addFavorite, removeFavorite } from "../../Store/Action/GenreAction";
+import { fetchAllMovies } from "../../Store/Action/TrendingMoviesAction";
+import { addFavorite, removeFavorite } from "../../Store/Action/MyFavoriteAction";
 import { Box, Typography, Grid } from "@mui/material";
 import CardComponent from "../../Components/CardComponent/CardComponent";
 import "./AllMovie.css";
@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 const AllMovie = () => {
   const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.favorites.favorites);
   const favoriteIds = favorites?.map((values) => values.id);
   const handleFavoriteClick = (movie) => {
     if (favoriteIds?.includes(movie.id)) {

@@ -5,7 +5,7 @@ import CardComponent from "../../Components/CardComponent/CardComponent";
 import "./MyFavorites.css";
 import PropTypes from "prop-types";
 const MyFavorites = () => {
-  const myFavoritemovies = useSelector((state) => state.favorites);
+  const myFavoritemovies = useSelector((state) => state.favorites.favorites);
   let isFavorite = false;
 
   return (

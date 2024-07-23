@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
   const location = useLocation();
   const navigate = useNavigate();
+
   return (
     <Box sx={{ padding: "30px" }}>
       <Card>

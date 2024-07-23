@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchParticularGenereData } from "../../Store/Action/GenreAction";
+
 import {
-  fetchParticularGenereData,
-  removeFavorite,
   addFavorite,
-} from "../../Store/Action/GenreAction";
+  removeFavorite,
+} from "../../Store/Action/MyFavoriteAction";
+
 import { useLocation, useParams } from "react-router";
 import { Box, Typography, Grid } from "@mui/material";
 import CardComponent from "../../Components/CardComponent/CardComponent";
@@ -18,7 +20,7 @@ const GenrePage = () => {
   const { id } = useParams();
 
   const { name } = loaction.state || { name: "nogenre" };
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.favorites.favorites);
 
   const favoriteIds = favorites?.map((values) => values.id);
 
@@ -30,10 +32,7 @@ const GenrePage = () => {
     }
   };
 
-  const [data, isLoading, error] = useFetchApi(
-    fetchParticularGenereData,
-    id
-  );
+  const [data, isLoading, error] = useFetchApi(fetchParticularGenereData, id);
 
   return (
     <>

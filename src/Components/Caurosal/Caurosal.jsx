@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { useEffect, useState } from "react";
 import { CardMedia,Box } from "@mui/material";
-import { fetchPopularMovies } from "../../Store/Action/GenreAction";
+import { fetchPopularMovies } from "../../Store/Action/PopularMovieAction";
 import { useNavigate } from "react-router-dom";
 import { BaseURL } from "../../Constants/constants";
 import "./Caurosal.css";
@@ -12,6 +12,7 @@ function Caurosal() {
   const [movies, setMovies] = useState([]);
 
   const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchPopularMovies();
