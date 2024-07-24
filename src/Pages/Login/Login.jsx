@@ -50,7 +50,7 @@ const Login = () => {
   }, [userId, navigate]);
 
   return (
-    <div className="Login">
+    <div className="Login"  data-testid="login-div">
       <h1>Login</h1>
       <ToastContainer />
       <form onSubmit={handleLogin}>

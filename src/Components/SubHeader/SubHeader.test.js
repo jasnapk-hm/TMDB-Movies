@@ -1,27 +1,25 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { MemoryRouter, useNavigate } from 'react-router-dom';
-import configureStore from 'redux-mock-store';
-import {thunk} from 'redux-thunk';
-import SubHeader from './SubHeader';
-import * as GenreActions from '../../Store/Action/GenreAction';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
+import configureStore from "redux-mock-store";
+import { thunk } from "redux-thunk";
+import SubHeader from "./SubHeader";
+import * as GenreActions from "../../Store/Action/GenreAction";
 
-jest.mock('../../Store/Action/GenreAction');
+jest.mock("../../Store/Action/GenreAction");
 
 const mockStore = configureStore([thunk]);
 
-const renderWithProviders = (store, ui, { route = '/' } = {}) => {
+const renderWithProviders = (store, ui, { route = "/" } = {}) => {
   return render(
     <Provider store={store}>
-      <MemoryRouter initialEntries={[route]}>
-        {ui}
-      </MemoryRouter>
+      <MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>
     </Provider>
   );
 };
 
-describe('SubHeader', () => {
+describe("SubHeader", () => {
   let store;
 
   beforeEach(() => {
@@ -33,19 +31,19 @@ describe('SubHeader', () => {
       },
     });
     GenreActions.fetchGenres.mockImplementation(() => ({
-      type: 'FETCH_GENRES',
+      type: "FETCH_GENRES",
     }));
   });
 
-  test('dispatches fetchGenres action on mount', () => {
+  test("dispatches fetchGenres action on mount", () => {
     renderWithProviders(store, <SubHeader />);
     expect(GenreActions.fetchGenres).toHaveBeenCalled();
   });
 
-  test('renders genre chips based on the state', () => {
+  test("renders genre chips based on the state", () => {
     const genres = [
-      { id: 1, name: 'Action' },
-      { id: 2, name: 'Comedy' },
+      { id: 1, name: "Action" },
+      { id: 2, name: "Comedy" },
     ];
     store = mockStore({
       genere: {
@@ -62,10 +60,8 @@ describe('SubHeader', () => {
     });
   });
 
-
-
-  test('does not render any chips if genres are not available', () => {
+  test("does not render any chips if genres are not available", () => {
     renderWithProviders(store, <SubHeader />);
-    expect(screen.queryByRole('button')).toBeNull();
+    expect(screen.queryByRole("button")).toBeNull();
   });
 });

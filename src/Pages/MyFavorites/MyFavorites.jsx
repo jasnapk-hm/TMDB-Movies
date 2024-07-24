@@ -1,12 +1,30 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Typography,Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import CardComponent from "../../Components/CardComponent/CardComponent";
 import "./MyFavorites.css";
+import { useDispatch } from "react-redux";
+
 import PropTypes from "prop-types";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../Store/Action/MyFavoriteAction";
 const MyFavorites = () => {
   const myFavoritemovies = useSelector((state) => state.favorites.favorites);
-  let isFavorite = false;
+  // let isFavorite = false;
+  const dispatch = useDispatch();
+
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const favoriteIds = favorites?.map((values) => values.id);
+
+  const handleFavoriteClick = (movie) => {
+    if (favoriteIds?.includes(movie.id)) {
+      dispatch(removeFavorite(movie.id));
+    } else {
+      dispatch(addFavorite(movie));
+    }
+  };
 
   return (
     <>
@@ -15,8 +33,10 @@ const MyFavorites = () => {
         {myFavoritemovies?.map((moives) => (
           <CardComponent
             movie={moives}
-            isFavourite={isFavorite}
+            // isFavourite={isFavorite}
             key={moives.id}
+            isFavourite={favoriteIds?.includes(moives.id)}
+            handleFavoriteClick={handleFavoriteClick}
           />
         ))}
       </Box>

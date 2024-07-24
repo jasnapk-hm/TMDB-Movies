@@ -5,23 +5,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import configureStore from "redux-mock-store";
 import GenrePage from "./GenrePage";
 import * as useFetchApi from "../../Components/UseEfectComponent/UseEffectComponent";
-import { MemoryRouter } from 'react-router-dom';
 
 jest.mock("../../Components/UseEfectComponent/UseEffectComponent", () => ({
   __esModule: true,
   default: jest.fn(),
 }));
 
-
-const renderWithProviders = (store, ui, { route = '/' } = {}) => {
-    return render(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[route]}>
-          {ui}
-        </MemoryRouter>
-      </Provider>
-    );
-  };
 const mockStore = configureStore([]);
 
 const mockData = {

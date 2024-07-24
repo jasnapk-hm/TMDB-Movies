@@ -29,7 +29,7 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
           className="CardMedia"
         />
         <CardContent className="CardContent">
-          {location.pathname !== "/favourites" && (
+          { (
             <IconButton
               data-testid="favorite-button"
               onClick={() => handleFavoriteClick(movie)}
