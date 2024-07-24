@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const SubHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const genere = useSelector((state) => state.genere);
+  const genere = useSelector((state) => state.genere.genere);
 
   const handleClick = (id, name) => {
     navigate(`/genre/${id}`, { state: { name } });

@@ -1,110 +1,94 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { MemoryRouter, useNavigate } from "react-router-dom";
 import configureStore from "redux-mock-store";
-import { BrowserRouter as Router } from "react-router-dom";
+import { thunk } from "redux-thunk";
 import Header from "./Header";
-import { fetchGenres, removeUser } from "../../Store/Action/GenreAction";
+import * as GenreActions from "../../Store/Action/GenreAction";
+import Subheader from "../SubHeader/SubHeader";
 
-jest.mock("../../Store/Action/GenreAction", () => ({
-  fetchGenres: jest.fn(),
-  removeUser: jest.fn(),
-}));
+jest.mock("../../Store/Action/GenreAction");
+jest.mock("../SubHeader/SubHeader", () =>
+  jest.fn(() => <div>Subheader Component</div>)
+);
+const mockedUsedNavigate = jest.fn();
 
-const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockNavigate,
+  useNavigate: () => mockedUsedNavigate,
 }));
 
-const mockStore = configureStore([]);
-const store = mockStore({
-  genre: { genres: [] },
-});
+const mockStore = configureStore([thunk]);
 
-describe("Header Component", () => {
+const renderWithProviders = (store, ui, { route = "/" } = {}) => {
+  return render(
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>
+    </Provider>
+  );
+};
+
+describe("Header", () => {
+  let store;
+
   beforeEach(() => {
-    store.dispatch = jest.fn();
+    store = mockStore({});
+    GenreActions.fetchGenres.mockImplementation(() => ({
+      type: "FETCH_GENRES",
+    }));
+    GenreActions.removeUser.mockImplementation(() => ({
+      type: "REMOVE_USER",
+    }));
   });
 
-  test("renders the Header component correctly", () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Header />
-        </Router>
-      </Provider>
-    );
-
-    expect(screen.getByText("TMDB Movies")).toBeInTheDocument();
-    expect(screen.getByText("My Favourites")).toBeInTheDocument();
+  it("renders Header and dispatches fetchGenres action on mount", () => {
+    renderWithProviders(store, <Header />);
+    expect(GenreActions.fetchGenres).toHaveBeenCalled();
   });
 
-  test("navigates to home when TMDB Movies is clicked", () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Header />
-        </Router>
-      </Provider>
-    );
+  it("renders Subheader component", () => {
+    renderWithProviders(store, <Header />);
+    expect(screen.getByText("Subheader Component")).toBeInTheDocument();
+  });
+
+  it("when TMDB Movies is clicked navigates to /home", () => {
+    const navigate = jest.fn();
+    jest
+      .spyOn(require("react-router-dom"), "useNavigate")
+      .mockImplementation(() => navigate);
+
+    renderWithProviders(store, <Header />);
 
     fireEvent.click(screen.getByText("TMDB Movies"));
-    expect(mockNavigate).toHaveBeenCalledWith("/home");
+    expect(navigate).toHaveBeenCalledWith("/home");
   });
 
-  test("navigates to favourites when My Favourites is clicked", () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Header />
-        </Router>
-      </Provider>
-    );
+  it("navigates to /favourites when My Favourites is clicked", () => {
+    const navigate = jest.fn();
+    jest
+      .spyOn(require("react-router-dom"), "useNavigate")
+      .mockImplementation(() => navigate);
+
+    renderWithProviders(store, <Header />);
 
     fireEvent.click(screen.getByText("My Favourites"));
-    expect(mockNavigate).toHaveBeenCalledWith("/favourites");
+    expect(navigate).toHaveBeenCalledWith("/favourites");
   });
 
-  test("opens the menu when account icon is clicked", () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Header />
-        </Router>
-      </Provider>
-    );
+  it("handles logout and navigates to /", () => {
+    const navigate = jest.fn();
+    jest
+      .spyOn(require("react-router-dom"), "useNavigate")
+      .mockImplementation(() => navigate);
 
-    fireEvent.click(screen.getByTestId("account-icon-button"));
-    expect(screen.getByText("Logout")).toBeInTheDocument();
-  });
-
-  test("dispatches removeUser and navigates to root on logout", () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Header />
-        </Router>
-      </Provider>
-    );
+    renderWithProviders(store, <Header />);
 
     fireEvent.click(screen.getByTestId("account-icon-button"));
     fireEvent.click(screen.getByText("Logout"));
 
-    expect(store.dispatch).toHaveBeenCalledWith(removeUser());
-    expect(mockNavigate).toHaveBeenCalledWith("/");
     expect(localStorage.getItem("User_ID")).toBeNull();
-  });
-
-  test("dispatches fetchGenres on mount", () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Header />
-        </Router>
-      </Provider>
-    );
-
-    expect(store.dispatch).toHaveBeenCalledWith(fetchGenres());
+    expect(GenreActions.removeUser).toHaveBeenCalled();
+    expect(navigate).toHaveBeenCalledWith("/");
   });
 });
