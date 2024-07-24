@@ -21,7 +21,6 @@ const mockData = {
 
 describe("GenrePage Component", () => {
   let store;
-  const mockFetchParticularGenereData = jest.fn();
 
   beforeEach(() => {
     store = mockStore({
@@ -34,7 +33,7 @@ describe("GenrePage Component", () => {
         error: null,
       },
     });
-    useFetchApi.default.mockImplementation(() => [mockData, false, null]);
+    useFetchApi.default.mockImplementation(() => [mockData]);
   });
 
   test("renders GenrePage component", () => {

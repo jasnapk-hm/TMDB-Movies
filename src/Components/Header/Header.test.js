@@ -29,7 +29,7 @@ const renderWithProviders = (store, ui, { route = "/" } = {}) => {
   );
 };
 
-describe("Header", () => {
+describe("Header component", () => {
   let store;
 
   beforeEach(() => {
@@ -42,17 +42,17 @@ describe("Header", () => {
     }));
   });
 
-  it("renders Header and dispatches fetchGenres action on mount", () => {
+  test("renders Header and dispatches fetchGenres action", () => {
     renderWithProviders(store, <Header />);
     expect(GenreActions.fetchGenres).toHaveBeenCalled();
   });
 
-  it("renders Subheader component", () => {
+  test("renders Subheader component", () => {
     renderWithProviders(store, <Header />);
     expect(screen.getByText("Subheader Component")).toBeInTheDocument();
   });
 
-  it("when TMDB Movies is clicked navigates to /home", () => {
+  test("when TMDB Movies is clicked navigates to /home", () => {
     const navigate = jest.fn();
     jest
       .spyOn(require("react-router-dom"), "useNavigate")
@@ -64,7 +64,7 @@ describe("Header", () => {
     expect(navigate).toHaveBeenCalledWith("/home");
   });
 
-  it("navigates to /favourites when My Favourites is clicked", () => {
+  test("navigates to /favourites when My Favourites is clicked", () => {
     const navigate = jest.fn();
     jest
       .spyOn(require("react-router-dom"), "useNavigate")
@@ -76,7 +76,7 @@ describe("Header", () => {
     expect(navigate).toHaveBeenCalledWith("/favourites");
   });
 
-  it("handles logout and navigates to /", () => {
+  test("handles logout and navigates to /", () => {
     const navigate = jest.fn();
     jest
       .spyOn(require("react-router-dom"), "useNavigate")

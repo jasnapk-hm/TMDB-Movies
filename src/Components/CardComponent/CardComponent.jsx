@@ -7,14 +7,13 @@ import {
   Typography,
   IconButton,
 } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { BaseURL } from "../../Constants/constants";
 import "./CardComponent.css";
 import PropTypes from "prop-types";
 const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
-  const location = useLocation();
   const navigate = useNavigate();
 
   return (

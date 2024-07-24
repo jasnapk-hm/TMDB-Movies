@@ -35,16 +35,16 @@ describe("AllMovie Component", () => {
     const error = { message: "Failed to get data" };
     useFetchApi.mockReturnValue([null, false, error]);
     render(
-      <Provider store={store}>
-        <AllMovie />
-      </Provider>
-    );
+        <Provider store={store}>
+          <AllMovie />
+        </Provider>
+      );
 
     expect(screen.getByText(/Error: Failed to get data/)).toBeInTheDocument();
   });
 
   test("renders no data available state", () => {
-    useFetchApi.mockReturnValue([[], false, null]);
+    useFetchApi.mockReturnValue([[]]);
     render(
       <Provider store={store}>
         <AllMovie />

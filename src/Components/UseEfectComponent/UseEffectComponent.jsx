@@ -13,10 +13,10 @@ const useFetchApi = (actionFunction, ids) => {
         const result = await dispatch(actionFunction(ids));
         // console.log("val", result);
         setData(result);
-        setIsLoading(false);
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err);
+      } finally {
         setIsLoading(false);
       }
     };

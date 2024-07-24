@@ -13,6 +13,7 @@ import {
 const MyFavorites = () => {
   const myFavoritemovies = useSelector((state) => state.favorites.favorites);
   // let isFavorite = false;
+  console.log("myFavoritemovies", myFavoritemovies.length);
   const dispatch = useDispatch();
 
   const favorites = useSelector((state) => state.favorites.favorites);
@@ -33,13 +34,25 @@ const MyFavorites = () => {
         {myFavoritemovies?.map((moives) => (
           <CardComponent
             movie={moives}
-            // isFavourite={isFavorite}
             key={moives.id}
             isFavourite={favoriteIds?.includes(moives.id)}
             handleFavoriteClick={handleFavoriteClick}
           />
         ))}
       </Box>
+      {myFavoritemovies && myFavoritemovies?.length === 0 && (
+        <Typography
+          variant="h6"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            top: "60px",
+            color: "red",
+          }}
+        >
+          No data available.
+        </Typography>
+      )}
     </>
   );
 };
