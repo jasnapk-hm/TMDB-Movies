@@ -48,8 +48,6 @@ describe('MovieDetails Component', () => {
     expect(screen.getByText('Movie Details')).toBeInTheDocument();
   });
 
-
-
   test('displays movie details', () => {
     render(
       <Provider store={store}>

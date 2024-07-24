@@ -12,12 +12,9 @@ import {
 } from "../../Store/Action/MyFavoriteAction";
 const MyFavorites = () => {
   const myFavoritemovies = useSelector((state) => state.favorites.favorites);
-  // let isFavorite = false;
-  console.log("myFavoritemovies", myFavoritemovies.length);
   const dispatch = useDispatch();
 
-  const favorites = useSelector((state) => state.favorites.favorites);
-  const favoriteIds = favorites?.map((values) => values.id);
+  const favoriteIds = myFavoritemovies?.map((values) => values.id);
 
   const handleFavoriteClick = (movie) => {
     if (favoriteIds?.includes(movie.id)) {
