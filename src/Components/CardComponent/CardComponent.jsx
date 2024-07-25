@@ -17,7 +17,7 @@ const CardComponenet = ({ movie, isFavourite, handleFavoriteClick }) => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ padding: "30px" }}>
+    <Box sx={{ padding: "3px" }}>
       <Card>
         <CardMedia
           component="img"

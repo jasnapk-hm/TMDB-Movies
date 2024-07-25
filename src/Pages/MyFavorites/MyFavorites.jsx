@@ -26,7 +26,7 @@ const MyFavorites = () => {
 
   return (
     <>
-      <Typography className="MyTitle">MyFavorites</Typography>
+      <Typography sx={{display:"flex",justifyContent:"center",fontSize:"32px"}}>MyFavorites</Typography>
       <Box className="Myfavorites">
         {myFavoritemovies?.map((moives) => (
           <CardComponent

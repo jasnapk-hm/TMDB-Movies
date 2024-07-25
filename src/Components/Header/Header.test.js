@@ -1,12 +1,11 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { MemoryRouter, useNavigate } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import configureStore from "redux-mock-store";
 import { thunk } from "redux-thunk";
 import Header from "./Header";
 import * as GenreActions from "../../Store/Action/GenreAction";
-import Subheader from "../SubHeader/SubHeader";
 
 jest.mock("../../Store/Action/GenreAction");
 jest.mock("../SubHeader/SubHeader", () =>
