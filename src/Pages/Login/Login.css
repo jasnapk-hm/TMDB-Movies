@@ -3,15 +3,50 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
-  padding: 20px;
+  padding: 10px;
+  background-image: url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876028.jpg);
+  height: 900px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 form {
   width: 100%;
   max-width: 600px;
+  margin-top: auto;
 }
-
+.formdiv{
+  margin-top: -295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MuiInputBase-input {
+  color: white; 
+}
 .button {
   width: 30%;
+}
+.Login {
+  color: white; 
+}
+
+.Login h1 {
+  color: white; 
+}
+
+.Login label {
+  color: white; 
+}
+
+.Login input {
+  color: white; 
+  background-color: transparent; 
+  border: 1px solid white; 
+}
+
+.Login button {
+  color: white; 
 }

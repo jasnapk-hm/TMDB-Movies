@@ -50,34 +50,36 @@ const Login = () => {
   }, [userId, navigate]);
 
   return (
-    <div className="Login"  data-testid="login-div">
-      <h1>Login</h1>
-      <ToastContainer />
-      <form onSubmit={handleLogin}>
-        <TextField
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          fullWidth
-          margin="normal"
-        />
-        <Button
-          className="button"
-          type="submit"
-          variant="contained"
-          color="primary"
-        >
-          Login
-        </Button>
-      </form>
+    <div className="Login" data-testid="login-div">
+      <div className="formdiv">
+        <h1>Login</h1>
+        <ToastContainer />
+        <form onSubmit={handleLogin}>
+          <label>Email</label>
+          <TextField
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <label>Password</label>
+          <TextField
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+          <Button
+            className="button"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Login
+          </Button>
+        </form>
+      </div>
     </div>
   );
 };
